@@ -18,7 +18,7 @@ namespace RosConnector.Sensors
         /// </summary>
         void Start()
         {
-            connection.RegisterPublisher<TransformMessage>(topic);
+            connection.RegisterPublisher<TransformMsg>(topic);
         }
 
         /// <summary>
@@ -35,9 +35,9 @@ namespace RosConnector.Sensors
         /// </summary>
         public void publish()
         {
-            TransformMessage msg = new TransformMessage();
-            msg.translation = new Vector3Message(transform.position.z, -transform.position.x, transform.position.y);
-            msg.rotation = new QuaternionMessage(0, 1, 0, 0);
+            TransformMsg msg = new TransformMsg();
+            msg.translation = new Vector3Msg(transform.position.z, -transform.position.x, transform.position.y);
+            msg.rotation = new QuaternionMsg(0, 1, 0, 0);
         
             connection.Publish(topic, msg);
         }
